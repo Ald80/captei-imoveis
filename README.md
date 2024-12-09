@@ -66,7 +66,7 @@ REQUESTTIMEOUT=300000
 
 Aqui está um exemplo de configuração:
 
-```
+```env
 # Configuração PostgreSQL
 
 DB_HOST='localhost'
