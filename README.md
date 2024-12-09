@@ -68,7 +68,6 @@ Aqui está um exemplo de configuração:
 
 ```env
 # Configuração PostgreSQL
-
 DB_HOST='localhost'
 DB_PORT=5432
 DB_NAME='imoveis_crawler'
@@ -76,7 +75,6 @@ DB_USER='postgres'
 DB_PASSWORD='123'
 
 # Configuração ElasticSearch 
-
 ELASTICSEARCH_HOST='http://localhost:9200'
 REQUESTTIMEOUT=300000
 ```
