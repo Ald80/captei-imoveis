@@ -40,7 +40,7 @@ async function extractDetails(link) {
         const $linkPage = cheerio.load(responseLink.data);
         const descricao = $linkPage('div.flex.flex-col.gap-2 > p.text-md.text-foxter-brand-900.leading-8').eq(3).text().trim();
         const codes = $linkPage('p:contains("Código do anunciante")').first().text().trim();
-        const [advertiserCodeText, code123iText] = codes.split('|').map(code => code.trim());
+        const [_, code123iText] = codes.split('|').map(code => code.trim());
         const code123i = code123iText.match(/Código 123i: (\w+)/)[1];
         const titulo = $linkPage('h1.text-lg.md\\:xl.lg\\:text-2xl.text-foxter-brand-900.font-bold.mb-2.2xl\\:mb-3').text();
         const detailsContainer = $linkPage('div.flex.flex-wrap.py-3.items-start.justify-evenly.md\\:justify-between.text-center');
@@ -75,6 +75,9 @@ async function extractDetails(link) {
 async function fetchLinks(base_url, portalNome, page) {
     try {
         const url_aluguel = `${base_url}/imoveis/aluga/em-sao-paulo-sp?page=${page}`
+        // Axios retornava sempre o HTML da primeira página
+        // Não importando se o valor de ${page} fosse maior que um
+        // Então foi necessário usar o Selenium para capturar o conteúdo correto das páginas subsequentes
         const html = await fetchPageContent(url_aluguel);
         const $ = cheerio.load(html);
 
@@ -119,8 +122,8 @@ async function fetchLinks(base_url, portalNome, page) {
 export async function fetchMultiplePagesImoveis(base_url, portalNome, numeroDePaginas) {
     try {
         let allResults = [];
-        for (let i = 1; i <= numeroDePaginas; i++) {
-            const properties = await fetchLinks(base_url, portalNome, i);
+        for (let pagina = 1; pagina <= numeroDePaginas; pagina++) {
+            const properties = await fetchLinks(base_url, portalNome, pagina);
             allResults = allResults.concat(properties);
         }
         return allResults;
