@@ -1,5 +1,4 @@
-import pkg from 'elasticsearch';
-const { Client } = pkg;
+import { Client } from '@elastic/elasticsearch'; 
 import { config } from 'dotenv';
 config();
 
