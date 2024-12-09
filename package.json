@@ -5,7 +5,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --write \"{database,service}/**/*.{js,ts}\"",
+    "lint": "npx eslint database/*.js service/*.js"
   },
   "keywords": [],
   "author": "",
@@ -17,8 +19,14 @@
     "dotenv": "^16.4.7",
     "elasticsearch": "^16.7.3",
     "pg": "^8.13.1",
+    "prettier": "^3.4.2",
     "selenium-webdriver": "^4.27.0",
     "webdriver-manager": "^12.1.9",
     "xml2js": "^0.6.2"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.16.0",
+    "eslint": "^9.16.0",
+    "globals": "^15.13.0"
   }
 }
