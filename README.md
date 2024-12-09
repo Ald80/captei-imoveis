@@ -17,31 +17,31 @@
 
 - Instale o `elasticsearch`: [link](https://www.elastic.co/downloads/elasticsearch)
 
-- Instale o `Node Js`: [link](https://nodejs.org/pt/download/package-manager) 
+- Instale o `Node JS`: [link](https://nodejs.org/pt/download/package-manager) 
 
 ## Configuração do Elasticsearch
 
-- Para facilitar a execução do elasticsearch, desabilite as opção de segurança e autenticação conforme as intruções abaixo:
+- Para facilitar a execução do `elasticsearch`, desabilite as opção de segurança e autenticação conforme as intruções abaixo:
     
     - Va até a pasta de `config` do elasticsearch
         ```
-        elasticsearch-x.xx.x\config
+        cd elasticsearch-x.xx.x\config
         ``` 
-    - Dentro da pasta, modifique os seguintes variáveis
+    - Dentro da pasta, modifique os seguintes variáveis no arquivo `elasticsearch.yml`
         ```
         .....
         xpack.security.enabled: false
         xpack.security.transport.ssl.enabled: false
         .....
         ```
-    - Insira as variáveis acima caso não as encontre no arquivo 
+    - OBS: **Insira as variáveis acima caso não as encontre no arquivo** 
 
 - inicie o `elasticsearch` (Windows)
 ```
 elasticsearch-x.xx.x\bin\elasticsearch.bat
 ```
 
-- Caso esteja utilizando outro sistema operacional, siga as instruções do link com a documentação referente a inicialização do elasticsearch: [link](https://www.elastic.co/guide/en/elasticsearch/reference/current/starting-elasticsearch.html)
+- Caso esteja utilizando outro sistema operacional, siga as instruções do link com a documentação referente a inicialização do `elasticsearch`: [link](https://www.elastic.co/guide/en/elasticsearch/reference/current/starting-elasticsearch.html)
 
 ## Instalação das dependências
 
@@ -99,7 +99,7 @@ node database\createDatabaseAndTables.js
     node service\index.js
     ```
 
-- Para verificar se os dados foram salvos corretamente no elasticsearch, faça a `requisição http` conforme o exemplo abaixo:
+- Para verificar se os dados foram salvos corretamente no `elasticsearch`, faça a `requisição http` conforme o exemplo abaixo:
 
 ```
 GET 
